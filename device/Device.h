@@ -7,12 +7,15 @@
 
 #include <iostream>
 
+#include "../resource/Session.h"
+
 class Device {
 
 public:
     virtual ~Device() = default;
     virtual std::string getIdentifier() const = 0;
     virtual std::string getDescriptor() const = 0;
+    virtual std::shared_ptr<Session> openSession() const = 0;
 };
 
 #endif //DEVICE_H

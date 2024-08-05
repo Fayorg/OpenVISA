@@ -5,15 +5,26 @@
 #ifndef USBDEVICE_H
 #define USBDEVICE_H
 
-#include ""
+#include "libusb.h"
 
 #include "../device/Device.h"
+#include "../usb/USBSession.h"
 
 class USBDevice : public Device {
 
 public:
-    USBDevice()
+    USBDevice(libusb_device *device);
+    ~USBDevice();
 
+    std::string getIdentifier() const override;
+    std::string getDescriptor() const override;
+    std::shared_ptr<Session> openSession() const override;
+
+private:
+    libusb_device *device;
+    libusb_device_descriptor descriptor;
+
+    void retrieveDescriptor();
 };
 
 

@@ -6,6 +6,10 @@
 #define RESOURCEMANAGER_H
 
 #include <iostream>
+#include <libusb.h>
+
+#include "../device/Device.h"
+#include "../usb/USBDevice.h"
 
 class ResourceManager {
 
@@ -15,12 +19,10 @@ public:
     std::vector<std::shared_ptr<Device>> findDevice() const;
 
 private:
-    ResourceManager() = default;
-    ~ResourceManager() = default;
+    ResourceManager();
+    ~ResourceManager();
 
     void discoverUSBDevices(std::vector<std::shared_ptr<Device>>& devices) const;
-
-    std::vec
 };
 
 
